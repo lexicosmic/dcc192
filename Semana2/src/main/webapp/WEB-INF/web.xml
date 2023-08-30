@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+    <servlet>
+        <servlet-name>Semana2Servlet</servlet-name>
+        <servlet-class>br.ufjf.semana2.Semana2Servlet</servlet-class>
+        <init-param>
+            <param-name>senha</param-name>
+            <param-value>senha</param-value>
+        </init-param>
+        <init-param>
+            <param-name>usuario</param-name>
+            <param-value>usuario</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Semana2Servlet</servlet-name>
+        <url-pattern>/Semana2Servlet</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
