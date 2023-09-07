@@ -19,14 +19,19 @@
     </head>
     <body>
         <h1>Conteúdo</h1>
-        <button onclick="generateJavaError()">
-            Erro de Java
-        </button>
-        <button onclick="generateHTMLError()">
-            Erro de HTML
-        </button>
-        <script>
+        <h2>Semana 1</h2>
+        <h2>Semana 2</h2>
+        <h2>Semana 3</h2>
+        <h2>Semana 4</h2>
 
+        <button onclick="logout()">
+            Sair do Sistema
+        </button>
+
+        <script>
+            function logout() {
+                window.location.href = "./Sair";
+            }
         </script>
     </body>
 </html>

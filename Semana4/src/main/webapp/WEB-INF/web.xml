@@ -3,14 +3,34 @@
     <servlet>
         <servlet-name>Menu</servlet-name>
         <servlet-class>br.ufjf.semana4.Menu</servlet-class>
+        <init-param>
+            <param-name>dbUsername</param-name>
+            <param-value>Joana</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPassword</param-name>
+            <param-value>uvapassa</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>Sair</servlet-name>
+        <servlet-class>br.ufjf.semana4.Sair</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Menu</servlet-name>
         <url-pattern>/Menu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Sair</servlet-name>
+        <url-pattern>/Sair</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/erro.html</location>
+    </error-page>
 </web-app>

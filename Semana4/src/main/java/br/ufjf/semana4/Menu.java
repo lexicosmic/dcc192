@@ -4,6 +4,7 @@
  */
 package br.ufjf.semana4;
 
+import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -32,7 +33,7 @@ public class Menu extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession(true);
-        String loggedUser = (String) session.getAttribute("logged");
+        String loggedUser = (String) session.getAttribute("loggedUser");
 
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -44,13 +45,15 @@ public class Menu extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Boas-vindas ao sistema, " + loggedUser + "!</h1>");
             out.println("<button type=\"button\" onclick=\"welcome()\">Boas-vindas</button>");
+            out.println("<button type=\"button\" onclick=\"javaError()\">Erro de Java</button>");
+            out.println("<button type=\"button\" onclick=\"htmlError()\">Erro de HTML</button>");
             out.println("<button type=\"button\" onclick=\"logout()\">Sair do sistema</button>");
             out.println("        <script type=\"text/javascript\">\n"
                     + "            function logout() {\n"
                     + "                window.location.href=\"./Sair\"\n"
                     + "            }\n"
                     + "            function welcome() {\n"
-                    + "                window.location.href = \"./Welcome\";\n"
+                    + "                window.location.href = \"./Welcome.jsp\";\n"
                     + "            }"
                     + "        </script>");
             out.println("</body>");
@@ -70,11 +73,12 @@ public class Menu extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         HttpSession session = request.getSession(true);
         String loggedUser = (String) session.getAttribute("logged");
 
         if (loggedUser == null) {
-            response.sendRedirect("/");
+            response.sendRedirect("./index.jsp");
         } else {
             processRequest(request, response);
         }
@@ -93,13 +97,25 @@ public class Menu extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        String loggedUser = (String) session.getAttribute("logged");
 
-        if (loggedUser == null) {
-            response.sendRedirect("/");
-        } else {
+        session.setAttribute("banana", "banana");
+
+        String username = (String) request.getParameter("username");
+        String password = (String) request.getParameter("password");
+
+        ServletConfig servletConfig = getServletConfig();
+        String dbUsername = (String) servletConfig.getInitParameter("dbUsername");
+        String dbPassword = (String) servletConfig.getInitParameter("dbPassword");
+
+        if (dbUsername.equals(username) && dbPassword.equals(password)) {
+            session.setAttribute("loggedUser", username);
+            session.setAttribute("loginHasError", "false");
             processRequest(request, response);
+        } else {
+            session.setAttribute("loginHasError", "true");
+            response.sendRedirect("./index.jsp");
         }
+
     }
 
     /**

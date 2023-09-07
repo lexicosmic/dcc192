@@ -34,7 +34,7 @@
         <article class="container">
             <h1>Exercício de LDSW</h1>
             <h2>Semana 4 - 2023.3</h2>
-            <form class="form" method="post" action=".">
+            <form class="form" method="post" action="./Menu">
                 <section class="container">
                     <label>Usuário:</label>
                     <input name="username" type="text" />
@@ -46,13 +46,9 @@
                 <input value="Entrar" type="submit" />
             </form>
             <%
-                String username = (String) request.getParameter("username");
-                String password = (String) request.getParameter("password");
+                String loginHasError = (String) session.getAttribute("loginHasError");
 
-                if (username == null || password == null) {
-                    return;
-                }
-                if (!dbUsername.equals(username) || !dbPassword.equals(password)){
+                if (loginHasError != null && loginHasError.equals("true")){
             %>
             <section>
                 <h2>
@@ -60,11 +56,6 @@
                 </h2>
             </section>
             <%
-                }
-                else if (username != null) {
-//                    HttpSession session = request.getSession();
-                    session.setAttribute("loggedUser", username);
-                    response.sendRedirect("./Welcome.jsp");
                 }
             %>
         </article>
