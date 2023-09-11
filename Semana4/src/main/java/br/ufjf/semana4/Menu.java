@@ -54,7 +54,13 @@ public class Menu extends HttpServlet {
                     + "            }\n"
                     + "            function welcome() {\n"
                     + "                window.location.href = \"./Welcome.jsp\";\n"
-                    + "            }"
+                    + "            }\n"
+                    + "            function javaError() {\n"
+                    + "                window.location.href = \"./JavaError\";\n"
+                    + "            }\n"
+                    + "            function htmlError() {\n"
+                    + "                window.location.href = \"./HtmlError.jsp\";\n"
+                    + "            }\n"
                     + "        </script>");
             out.println("</body>");
             out.println("</html>");

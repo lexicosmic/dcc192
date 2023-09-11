@@ -16,6 +16,10 @@
         <servlet-name>Sair</servlet-name>
         <servlet-class>br.ufjf.semana4.Sair</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>JavaError</servlet-name>
+        <servlet-class>br.ufjf.semana4.JavaError</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Menu</servlet-name>
         <url-pattern>/Menu</url-pattern>
@@ -24,13 +28,24 @@
         <servlet-name>Sair</servlet-name>
         <url-pattern>/Sair</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JavaError</servlet-name>
+        <url-pattern>/JavaError</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/erroHtml.html</location>
+    </error-page>
     <error-page>
         <exception-type>java.lang.Exception</exception-type>
-        <location>/erro.html</location>
+        <location>/erroJava.html</location>
     </error-page>
 </web-app>
