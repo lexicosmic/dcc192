@@ -46,13 +46,13 @@
                 <input value="Entrar" type="submit" />
             </form>
             <%
-                String loginHasError = (String) session.getAttribute("loginHasError");
+                String message = (String) session.getAttribute("message");
 
-                if (loginHasError != null && loginHasError.equals("true")){
+                if (message != null){
             %>
             <section>
                 <h2>
-                    As credenciais estão incorretas!
+                    <%= message %>
                 </h2>
             </section>
             <%

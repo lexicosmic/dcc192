@@ -81,9 +81,10 @@ public class Menu extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(true);
-        String loggedUser = (String) session.getAttribute("logged");
+        String loggedUser = (String) session.getAttribute("loggedUser");
 
         if (loggedUser == null) {
+            session.setAttribute("message", "A sessão expirou!");
             response.sendRedirect("./index.jsp");
         } else {
             processRequest(request, response);
@@ -115,10 +116,10 @@ public class Menu extends HttpServlet {
 
         if (dbUsername.equals(username) && dbPassword.equals(password)) {
             session.setAttribute("loggedUser", username);
-            session.setAttribute("loginHasError", "false");
+            session.removeAttribute("message");
             processRequest(request, response);
         } else {
-            session.setAttribute("loginHasError", "true");
+            session.setAttribute("message", "As credenciais são inválidas!");
             response.sendRedirect("./index.jsp");
         }
 

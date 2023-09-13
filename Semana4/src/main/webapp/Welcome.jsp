@@ -8,7 +8,8 @@
 <%
     String loggedUser = (String) session.getAttribute("loggedUser");
     if(loggedUser == null){
-       response.sendRedirect("./index.jsp");
+        session.setAttribute("message", "A sessão expirou!");
+        response.sendRedirect("./index.jsp");
     }
 %>
 <!DOCTYPE html>
