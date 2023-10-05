@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : erroHtml
     Created on : Oct 3, 2023, 10:15:29 PM
     Author     : analexicon
@@ -14,6 +14,6 @@
     </head>
     <body>
         <h1>Ocorreu um erro de HTML!</h1>
-        <a href="./index.jsp">Voltar para o índice</a>
+        <a href="./Controller">Voltar para o índice</a>
     </body>
 </html>
